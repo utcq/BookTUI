@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import ui
 import os, re, sys
 
