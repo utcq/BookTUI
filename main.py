@@ -44,7 +44,7 @@ if __name__ == "__main__":
         file = sys.argv[1]
         page = 0
         if len(sys.argv) == 3:
-            page = sys.argv[2]
+            page = int(sys.argv[2])
         title = retrieveTitle(file)
         content = retrieveContent(file)
         book = splitIntoCharps(content)
