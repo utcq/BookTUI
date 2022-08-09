@@ -60,7 +60,7 @@ sudo rm /usr/bin/booktui
 
 The usage is really simple
 ```
-Usage: booktui [OPTIONAL: update] file.pdf [OPTIONAL: page_number]
+Usage: booktui [OPTIONAL: update] file.pdf/.epub [OPTIONAL: page_number]
 KEYS: 
     -> = Next page
     <- = Previous page
