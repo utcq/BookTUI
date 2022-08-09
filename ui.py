@@ -9,7 +9,9 @@ def reader(chaptersx, title, page: int=0):
     chapters = chaptersx
     pages = len(chapters)
     while True:
+        screen.attron(curses.A_BOLD)
         screen.border(0)
+        screen.attron(curses.A_NORMAL)
 
         box1 = curses.newwin(43, 193,4, 14)
         box1.immedok(True)
@@ -40,6 +42,8 @@ def reader(chaptersx, title, page: int=0):
             try:
                 x = chapters[page]
             except:
+                page+=1
+            if page <= 0:
                 page+=1
         elif char == curses.KEY_RIGHT:
             page+=1
