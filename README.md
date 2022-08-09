@@ -26,6 +26,14 @@ chmod +x /usr/bin/booktui
 ```
 
 
+# Uninstallation
+
+```bash
+rm -rf ~/BookTUI
+sudo rm /usr/bin/booktui
+```
+
+
 # Usage
 
 The usage is really simple
