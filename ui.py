@@ -50,8 +50,12 @@ def reader(chaptersx, title, file, page: int=0):
         box2.addstr(1, 2, textwrap.fill(f"{str(page + 1)}/{str(pages)}", 10))
         
         box3.addstr(1, 2, textwrap.fill(f"{title}"))
+        
+        try:
 
-        box1.addstr(1, 3, textwrap.fill(chaptersx[page].replace(r"\n", "\n"), 180))
+            box1.addstr(1, 3, textwrap.fill(chaptersx[page].replace(r"\n", "\n"), 180))
+        except:
+            print("Invalid PDF type!")
         
         box4.addstr(1, 1, textwrap.fill(searchterm), 12)
 
