@@ -5,7 +5,7 @@ home = os.path.expanduser('~')
 
 def updater():
     print("Checking for updates...")
-    ver = int(open(f"{home}/BookTUI/.version", "r").read())
+    ver = int(open(f"{home}/BookTUI/.version", "r").read().strip().replace("\n", ""))
     response= requests.get('https://raw.githubusercontent.com/UnityTheCoder/BookTUI/main/.version')
     crv = int(response.text.strip().replace("\n", "")) 
     if ver != crv:
