@@ -21,20 +21,23 @@ def reader(chaptersx, title, page: int=0):
     screen.border(0)
     screen.attron(curses.A_NORMAL)
 
-    box1 = curses.newwin(39, 193,4, 14)
-    box1.immedok(True)
-    box1.box()
-    box2 = curses.newwin(3, 13, 1, 2)
-    box2.immedok(True)
-    box2.box()
-    box3 = curses.newwin(3, 60, 1, 50)
-    box3.immedok(True)
-    box3.box()
-    box4 = curses.newwin(3, 30, 44, 2)
-    box4.immedok(True)
-    box4.box()
-        
+           
     while True:
+
+
+        box1 = curses.newwin(39, 193,4, 14)
+        box1.immedok(True)
+        box1.box()
+        box2 = curses.newwin(3, 13, 1, 2)
+        box2.immedok(True)
+        box2.box()
+        box3 = curses.newwin(3, 60, 1, 50)
+        box3.immedok(True)
+        box3.box()
+        box4 = curses.newwin(3, 30, 44, 2)
+        box4.immedok(True)
+        box4.box()
+
 
 
 
@@ -89,13 +92,14 @@ def reader(chaptersx, title, page: int=0):
                 if searchterm.replace(':search ', '') in chap.lower():
                     pagsf.append(pg)
                     listening = False
-                    chaptersx[pg] = chap.replace(searchterm.replace(":search ", ""), " ---> " + searchterm.replace(':search ', '').upper() + " <--- ")
+                    chaptersx[pg] = chap.replace(searchterm.replace(":search ", ""), " --------> " + searchterm.replace(':search ', '') + " <-------- ")
                 pg+=1
             try:
-                page = pagsf[0]
-                pagc = 0
+                if len(pagsf) > 0:
+                    page = pagsf[0]
+                    pagc = 0
             except Exception as e:
-                print(e)
+                pass
 
         elif char == 110 and searchterm != "" and pagsf != []:
             xc = len(pagsf) - 1
@@ -111,7 +115,10 @@ def reader(chaptersx, title, page: int=0):
             listening=False
             pagsf = []
             pagc = 0
-
+            xi = 0
+            for chap in chaptersx:
+                chaptersx[xi] = chaptersx[xi].replace(" --------> ", "").replace(" <-------- ", "")
+                xi += 1
 
     
     curses.endwin()

@@ -19,6 +19,27 @@ def retrieveTitle(path):
     return result.read().replace(r"\n", "\n")
 
 
+def retrieveETitle(path):
+    result = os.popen(f"epub2txt --meta {path}  2>/dev/null | grep Title: | sed 's/Title:[ ]*//'")
+    return result.read().replace(r"\n", "\n")
+
+def retrieveEContent(path):
+    result = os.popen(f"epub2txt {path}")
+    return result.read().replace(r"\n", "\n")
+
+def splitIntoCharpsE(textx):
+    charps = []
+    text = ""
+    for line in textx.strip().split("\n"):
+        text += line + r"\n"
+        if r"[0m" in text:
+            #[1mLadle Rat Rotten Hut [0m
+            charps.append(text.replace("[1m", "").replace("[0m", "").replace("[3m", ""))
+            text = ""
+    return charps
+    
+
+
 def retrieveContent(path):
     result = os.popen(f"pdftotext {path} -")
     return result.read().replace(r"\n", "\n")
@@ -58,8 +79,15 @@ if __name__ == "__main__":
         if sys.argv[1] == "update":
             updater()
             exit()
-        title = retrieveTitle(file)
-        content = retrieveContent(file)
-        book = splitIntoCharps(content)
-        ui.reader(book, title, page)
+
+        if file.endswith(".pdf"):
+            title = retrieveTitle(file)
+            content = retrieveContent(file)
+            book = splitIntoCharps(content)
+            ui.reader(book, title, page)
+        elif file.endswith(".epub"):
+            title = retrieveETitle(file)
+            content = retrieveEContent(file)
+            book = splitIntoCharpsE(content)
+            ui.reader(book, title, page)
         
