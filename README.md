@@ -56,7 +56,7 @@ sudo rm /usr/bin/booktui
 ```
 
 
-# Update
+# Updating
 ```bash
 booktui update
 ```
