@@ -47,16 +47,19 @@ def splitIntoCharps(text):
 
 
 if __name__ == "__main__":
-    updater()
     if len(sys.argv) == 1:
-        print("Usage: booktui file.pdf [OPTIONAL: page_number]\nKEYS: \n    -> = Next page\n    <- = Previous page\n    Q = exit")
+        print("Usage: booktui [OPTIONAL: update] file.pdf [OPTIONAL: page_number]\nKEYS: \n    -> = Next page\n    <- = Previous page\n    Q = exit\n    :search = Search a word in text\n    N = next found word")
         sys.exit(1)
     else:
         file = sys.argv[1]
         page = 0
         if len(sys.argv) == 3:
             page = int(sys.argv[2])
+        if sys.argv[1] == "update":
+            updater()
+            exit()
         title = retrieveTitle(file)
         content = retrieveContent(file)
         book = splitIntoCharps(content)
         ui.reader(book, title, page)
+        
