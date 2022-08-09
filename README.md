@@ -34,6 +34,8 @@ sudo make install
 
 ----------------------------------------
 
+Finally the booktui installation
+
 **All Distro**
 
 ```bash
