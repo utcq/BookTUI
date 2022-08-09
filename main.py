@@ -3,6 +3,16 @@ import ui
 import os, re, sys
 
 
+def updater():
+    print("Checking for updates...")
+    ver = int(open(f"{home}/BookTUI/.version", "r").read())
+    response= requests.get('https://raw.githubusercontent.com/UnityTheCoder/BookTUI/main/.version')
+    crv = int(response.text)
+    if ver != crv:
+        os.system(f"rm -rf {home}/BookTUI; git clone https://github.com/UnityTheCoder/BookTUI.git {home}/BookTUI; chmod +x /usr/bin/booktui")
+        print("Updated!")
+        exit()
+    print("Updates not found!")
 
 def retrieveTitle(path):
     result = os.popen(f"pdfinfo {path}  2>/dev/null | grep Title: | sed 's/Title:[ ]*//'")
@@ -37,6 +47,7 @@ def splitIntoCharps(text):
 
 
 if __name__ == "__main__":
+    updater()
     if len(sys.argv) == 1:
         print("Usage: booktui file.pdf [OPTIONAL: page_number]\nKEYS: \n    -> = Next page\n    <- = Previous page\n    Q = exit")
         sys.exit(1)
