@@ -8,6 +8,8 @@ def reader(chaptersx, title, page: int=0):
     curses.noecho()
     chapters = chaptersx
     pages = len(chapters)
+    if page != 0:
+        page-=1
     while True:
         screen.attron(curses.A_BOLD)
         screen.border(0)
@@ -43,7 +45,7 @@ def reader(chaptersx, title, page: int=0):
                 x = chapters[page]
             except:
                 page+=1
-            if page <= 0:
+            if page <= -1:
                 page+=1
         elif char == curses.KEY_RIGHT:
             page+=1
