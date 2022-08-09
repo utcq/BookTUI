@@ -62,7 +62,7 @@ booktui update
 ```
 
 # Changelog
-```
+```markdown
 - New UI
 - EPUB support
 ```
