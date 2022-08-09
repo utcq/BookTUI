@@ -34,6 +34,8 @@ sudo make install
 
 ----------------------------------------
 
+**All Distro**
+
 ```bash
 cd ~
 git clone https://github.com/UnityTheCoder/BookTUI.git
