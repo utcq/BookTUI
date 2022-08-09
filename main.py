@@ -7,7 +7,7 @@ def updater():
     print("Checking for updates...")
     ver = int(open(f"{home}/BookTUI/.version", "r").read())
     response= requests.get('https://raw.githubusercontent.com/UnityTheCoder/BookTUI/main/.version')
-    crv = int(response.text.strip())
+    crv = int(response.text.strip().replace("\n", "")) 
     if ver != crv:
         os.system(f"rm -rf {home}/BookTUI; git clone https://github.com/UnityTheCoder/BookTUI.git {home}/BookTUI; chmod +x /usr/bin/booktui")
         print("Updated!")
