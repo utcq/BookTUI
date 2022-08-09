@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import ui
-import os, re, sys
-
+import os, re, sys, requests
+home = os.path.expanduser('~')
 
 def updater():
     print("Checking for updates...")
