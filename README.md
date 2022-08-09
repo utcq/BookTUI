@@ -16,6 +16,24 @@ sudo apt-get install libpoppler-dev
 
 ----------------------------------------
 
+
+If you want to read epub files too you'll need epub2txt
+
+**Arch Linux**
+```bash
+yay -S epub2txt
+```
+
+**Other distro**
+```bash
+git clone https://github.com/kevinboone/epub2txt2.git
+cd epub2txt2
+make
+sudo make install
+```
+
+----------------------------------------
+
 ```bash
 cd ~
 git clone https://github.com/UnityTheCoder/BookTUI.git
