@@ -14,23 +14,27 @@ def reader(chaptersx, title, page: int=0):
     listening = False
     if page != 0:
         page-=1
-    while True:
-        screen.attron(curses.A_BOLD)
-        screen.border(0)
-        screen.attron(curses.A_NORMAL)
+    screen.erase()
+    screen.refresh()
+    screen.idcok(False)
+    screen.attron(curses.A_BOLD)
+    screen.border(0)
+    screen.attron(curses.A_NORMAL)
 
-        box1 = curses.newwin(39, 193,4, 14)
-        box1.immedok(True)
-        box1.box()
-        box2 = curses.newwin(3, 13, 1, 2)
-        box2.immedok(True)
-        box2.box()
-        box3 = curses.newwin(3, 60, 1, 50)
-        box3.immedok(True)
-        box3.box()
-        box4 = curses.newwin(3, 30, 44, 2)
-        box4.immedok(True)
-        box4.box()
+    box1 = curses.newwin(39, 193,4, 14)
+    box1.immedok(True)
+    box1.box()
+    box2 = curses.newwin(3, 13, 1, 2)
+    box2.immedok(True)
+    box2.box()
+    box3 = curses.newwin(3, 60, 1, 50)
+    box3.immedok(True)
+    box3.box()
+    box4 = curses.newwin(3, 30, 44, 2)
+    box4.immedok(True)
+    box4.box()
+        
+    while True:
 
 
 
