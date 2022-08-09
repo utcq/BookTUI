@@ -61,6 +61,12 @@ sudo rm /usr/bin/booktui
 booktui update
 ```
 
+# Changelog
+```
+- New UI
+- EPUB support
+```
+
 # Usage
 
 The usage is really simple
