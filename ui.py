@@ -23,41 +23,43 @@ def reader(chaptersx, title, file, page: int=0):
     screen.refresh()
     screen.idcok(False)
     screen.attron(curses.A_BOLD)
-    screen.border(0)
+    #screen.border(0)
     screen.attron(curses.A_NORMAL)
 
            
     while True:
 
-
-        box1 = curses.newwin(39, 193,4, 14)
+        box0 = curses.newwin(39, 191,4, 8)
+        box1 = curses.newwin(34, 186,5, 9)
+        box0.immedok(True)
         box1.immedok(True)
-        box1.box()
+        box0.box()
         box2 = curses.newwin(3, 13, 1, 2)
         box2.immedok(True)
-        box2.box()
-        box3 = curses.newwin(3, 60, 1, 50)
+        #box2.box()
+        box3 = curses.newwin(3, 60, 1, 76)
         box3.immedok(True)
-        box3.box()
+        #box3.box()
         box4 = curses.newwin(3, 30, 44, 2)
         box4.immedok(True)
         box4.box()
+        box5 = curses.newwin(3, 10, 1, 195)
+        box5.immedok(True)
+        #box5.box()
 
 
-
+        perc = str(int(((page + 1)/len(chaptersx))*100)) + "%"
 
         
-        box2.addstr(1, 2, textwrap.fill(f"{str(page + 1)}/{str(pages)}", 10))
+        box2.addstr(1, 2, textwrap.fill(f"{str(page + 1)}/{str(pages)}", 10), curses.A_BOLD)
         
-        box3.addstr(1, 2, textwrap.fill(f"{title}"))
-        
-        try:
+        box3.addstr(1, 2, textwrap.fill(f"{title}"), curses.A_BOLD)
 
-            box1.addstr(1, 3, textwrap.fill(chaptersx[page].replace(r"\n", "\n"), 180))
-        except:
-            print("Invalid PDF type!")
+        box1.addstr(0, 0, textwrap.fill(chaptersx[page].replace(r"\n", "\n"), 180))
+
+        box5.addstr(1, 3, textwrap.fill(perc, 4), curses.A_BOLD)
         
-        box4.addstr(1, 1, textwrap.fill(searchterm), 12)
+        box4.addstr(1, 1, textwrap.fill(searchterm, 12))
 
 
         #box1.addstr("Hello World of Curses!")
@@ -102,6 +104,10 @@ def reader(chaptersx, title, file, page: int=0):
             listening = True
             searchterm+=":"
         elif char == 10 and searchterm != "":
+            if ":quit" in searchterm:
+                screen.erase()
+                curses.endwin()
+                exit()
             pg = 0
             for chap in chaptersx:
                 if searchterm.replace(':search ', '') in chap.lower():

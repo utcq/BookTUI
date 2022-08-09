@@ -44,7 +44,6 @@ def retrieveContent(path):
     result = os.popen(f"pdftotext {path} -")
     return result.read().replace(r"\n", "\n")
 
-
 def splitIntoCharps(text):
     charps = []
     charpsz = []
