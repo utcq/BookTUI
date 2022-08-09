@@ -56,11 +56,16 @@ sudo rm /usr/bin/booktui
 ```
 
 
+# Update
+```bash
+booktui update
+```
+
 # Usage
 
 The usage is really simple
 ```
-Usage: booktui [OPTIONAL: update] file.pdf/.epub [OPTIONAL: page_number]
+Usage: booktui file.pdf/.epub [OPTIONAL: page_number]
 KEYS: 
     -> = Next page
     <- = Previous page
