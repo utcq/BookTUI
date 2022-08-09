@@ -1,7 +1,12 @@
 import curses
 import textwrap
+import os
 
-def reader(chaptersx, title, page: int=0):
+
+
+home = os.path.expanduser('~')
+
+def reader(chaptersx, title, file, page: int=0):
     screen = curses.initscr()
     screen.immedok(True)
     screen.keypad(True)
@@ -68,7 +73,13 @@ def reader(chaptersx, title, page: int=0):
                 except:
                     searchterm+=str(char)
         else:
-            if char == 113: break
+            if char == 113: 
+                if os.path.isdir(f"{home}/.config/booktui/"):
+                    pass
+                else:
+                    os.mkdir(f"{home}/.config/booktui/")
+                open(f"{home}/.config/booktui/{file.replace('.pdf', '.conf').replace('.epub','.conf')}", "w").write(str(page))
+                break
         if char == curses.KEY_LEFT:
             page-=1
             try:

@@ -76,6 +76,9 @@ if __name__ == "__main__":
         page = 0
         if len(sys.argv) == 3:
             page = int(sys.argv[2])
+        else:
+            if os.path.exists(f"{home}/.config/booktui/{file.replace('.pdf', '.conf').replace('.epub','.conf')}"):
+                page = int(open(f"{home}/.config/booktui/{file.replace('.pdf', '.conf').replace('.epub','.conf')}", "r").read()) + 1
         if sys.argv[1] == "update":
             updater()
             exit()
@@ -84,10 +87,10 @@ if __name__ == "__main__":
             title = retrieveTitle(file)
             content = retrieveContent(file)
             book = splitIntoCharps(content)
-            ui.reader(book, title, page)
+            ui.reader(book, title, file, page)
         elif file.endswith(".epub"):
             title = retrieveETitle(file)
             content = retrieveEContent(file)
             book = splitIntoCharpsE(content)
-            ui.reader(book, title, page)
+            ui.reader(book, title, file, page)
         
