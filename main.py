@@ -5,9 +5,9 @@ home = os.path.expanduser('~')
 
 def updater():
     print("Checking for updates...")
-    ver = int(open(f"{home}/BookTUI/.version", "r").read().strip().replace("\n", ""))
+    ver = float(open(f"{home}/BookTUI/.version", "r").read().strip().replace("\n", ""))
     response= requests.get('https://raw.githubusercontent.com/UnityTheCoder/BookTUI/main/.version')
-    crv = int(response.text.strip().replace("\n", "")) 
+    crv = float(response.text.strip().replace("\n", "")) 
     if ver != crv:
         os.system(f"rm -rf {home}/BookTUI; git clone https://github.com/UnityTheCoder/BookTUI.git {home}/BookTUI; chmod +x /usr/bin/booktui")
         print("Updated!")
