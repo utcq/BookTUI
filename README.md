@@ -38,10 +38,12 @@ sudo rm /usr/bin/booktui
 
 The usage is really simple
 ```
-Usage: booktui file.pdf [OPTIONAL: page_number]
+Usage: booktui [OPTIONAL: update] file.pdf [OPTIONAL: page_number]
 KEYS: 
     -> = Next page
     <- = Previous page
-    Q = exit      
+    Q = exit
+    :search = Search a word in text
+    N = next found word 
 ```
 ![Alt text](https://github.com/UnityTheCoder/BookTUI/blob/main/images/screen6.png?raw=true)
